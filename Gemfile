@@ -153,6 +153,7 @@ group :test do
   gem "json_spec"
   gem "activerecord-tableless", "~> 1.0"
   gem "codeclimate-test-reporter", :require => nil
+  gem "sqlite3"
 end
 
 group :ldap do
@@ -193,10 +194,6 @@ platforms :mri, :mingw do
 
   group :postgres do
     gem 'pg', "~> 0.17.1"
-  end
-
-  group :sqlite do
-    gem "sqlite3"
   end
 end
 
