@@ -26,7 +26,7 @@
 # See doc/COPYRIGHT.rdoc for more details.
 #++
 
-if Gem::Version.new(Bundler::VERSION) < Gem::Version.new('1.5.0')
+if Gem::Version.new(Bundler::VERSION) < Gem::Version.new('1.5.1')
   abort <<-Message
 
   *****************************************************
