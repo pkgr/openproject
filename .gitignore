@@ -71,8 +71,6 @@
 /*.rbc
 /doc/app
 #/Gemfile.lock
-/Gemfile.local
-/Gemfile.plugins
 /.rvmrc*
 /.ruby-version
 /.ruby-gemset
