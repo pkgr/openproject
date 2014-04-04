@@ -43,6 +43,7 @@ if Gem::Version.new(Bundler::VERSION) < Gem::Version.new('1.5.1')
 end
 
 source 'https://rubygems.org'
+ruby '2.1.1'
 
 gem "rails", "~> 3.2.18"
 
