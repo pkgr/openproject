@@ -45,6 +45,7 @@ See doc/COPYRIGHT.rdoc for more details.
 * `#3348` Fix: Menu item "more functions" is cut off where content ends
 * `#3395` Fix: After error message values are gone during creation of message
 * `#3531` Fix: Type 'None' cannot be configured via admin settings
+* `#3775` No success message when adding a user to a project
 * `#4007` Timeline page title does not contain name of timeline
 * `#4040` Fix: Referencing work packages with ### in news, forums and meetings does not work
 * `#4087` Ignore type list flash when activating flash messages
@@ -55,9 +56,13 @@ See doc/COPYRIGHT.rdoc for more details.
 * `#5057` Fix: Whitelisted more params for planning elements controller
 * `#5214` Allow setting watchers and time entries for work packages via API`
 * `#5311` Encapsulate ActiveSupport::Notifications
+* `#5553` Integrate OmniAuth
+* `#5632`: Check whether cookies are not shared between sub-uris
+* `#6309` Remove API v1 & add level_list to API v2
 * Allowed sending of mails with only cc: or bcc: fields
 * Allow adding attachments to created work packages via planning elements controller
 * Remove unused rmagick dependency
+* Add settings callback
 * Fix: Work package short URI
 * Fix: work package due date not validated when start date is not present
 * Fix: Use correct questions for deletion of documents/files in rake tasks
@@ -66,7 +71,12 @@ See doc/COPYRIGHT.rdoc for more details.
 * Fix: Asset require for plug-ins
 * Fix: at.who styling
 
-## 3.0.0pre51
+## 3.0.1
+
+* `#5265` Fix: Error adding Work Package
+* `#5322` Fix: First Journal Entry of chiliproject issues shows incorrect diff
+
+## 3.0.0
 
 * `#3701` Fix: Filter custom fields of work packages in timeline reports
 * `#5033` Migration RepairInvalidDefaultWorkPackageCustomValues fails on Postgres

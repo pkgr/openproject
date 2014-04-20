@@ -51,7 +51,7 @@ gem "coderay", "~> 1.0.5"
 gem "rubytree", "~> 0.8.3"
 gem "rdoc", ">= 2.4.2"
 gem 'globalize'
-
+gem 'omniauth'
 gem 'request_store'
 
 # TODO: adds #auto_link which was deprecated in rails 3.1
@@ -74,7 +74,6 @@ gem 'svg-graph'
 
 gem "date_validator"
 
-# replacing rsb with rabl --
 # We rely on this specific version, which is the latest as of now (end of 2013),
 # because we have to apply to it a bugfix which could break things in other versions.
 # This can be removed as soon as said bugfix is integrated into rabl itself.
@@ -143,7 +142,7 @@ group :test do
   gem 'rspec', '~> 2.14'
   # also add to development group, so "spec" rake task gets loaded
   gem "rspec-rails", "~> 2.14", :group => :development
-  gem 'rspec-example_disabler'
+  gem 'rspec-example_disabler', github: 'finnlabs/rspec-example_disabler', branch: 'master'
   gem 'capybara'
   gem 'capybara-screenshot'
   gem 'selenium-webdriver'
@@ -162,10 +161,6 @@ end
 
 group :ldap do
   gem "net-ldap", '~> 0.2.2'
-end
-
-group :openid do
-  gem "ruby-openid", '~> 2.2.3', :require => 'openid'
 end
 
 group :development do
