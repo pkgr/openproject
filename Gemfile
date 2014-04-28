@@ -43,7 +43,6 @@ if Gem::Version.new(Bundler::VERSION) < Gem::Version.new('1.5.1')
 end
 
 source 'https://rubygems.org'
-ruby '2.1.1'
 
 gem "rails", "~> 3.2.17"
 
@@ -102,9 +101,6 @@ group :production do
   # requires memcached 1.4+
   # see https://github.com/mperham/dalli
   gem 'dalli'
-
-  # required for pkgr installation
-  gem 'unicorn'
 end
 
 group :assets do
@@ -156,7 +152,6 @@ group :test do
   gem "json_spec"
   gem "activerecord-tableless", "~> 1.0"
   gem "codeclimate-test-reporter", :require => nil
-  gem "sqlite3"
 end
 
 group :ldap do
@@ -193,6 +188,10 @@ platforms :mri, :mingw do
 
   group :postgres do
     gem 'pg', "~> 0.17.1"
+  end
+
+  group :sqlite do
+    gem "sqlite3"
   end
 end
 
