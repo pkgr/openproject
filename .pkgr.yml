@@ -1,8 +1,4 @@
 user: openproject
 group: openproject
-before_precompile: ./packaging/debian/setup.sh
-#build_dependencies:
-#  - libmagickcore-dev
-#  - libmagickwand-dev
-#dependencies:
-#  - git-core
+before_precompile: "./packaging/debian/setup.sh"
+after_install: "packaging/debian/postinstall.sh"
