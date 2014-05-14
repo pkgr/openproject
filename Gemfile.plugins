@@ -1,0 +1,4 @@
+gem 'openproject-plugins',      :git => 'https://github.com/opf/openproject-plugins.git', :branch => 'dev'
+gem 'openproject-meeting',      :git => 'https://github.com/finnlabs/openproject-meeting.git', :branch => 'dev'
+gem 'openproject-translations', :git => 'https://github.com/opf/openproject-translations', :branch => 'dev'
+

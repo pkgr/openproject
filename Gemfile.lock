@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/finnlabs/openproject-meeting.git
+  revision: 64429bbb0778a5055abcaea5a1617afc1f722122
+  branch: dev
+  specs:
+    openproject-meeting (3.0.9)
+      openproject-plugins (~> 1.0.6)
+      rails (~> 3.2.9)
+
+GIT
   remote: https://github.com/finnlabs/rack-protection.git
   revision: 5a7d1bd2f05ca75faf7909c8cc978732a0080898
   ref: 5a7d1bd
@@ -19,6 +28,26 @@ GIT
   specs:
     i18n-js (3.0.0.rc5)
       i18n
+
+GIT
+  remote: https://github.com/opf/openproject-plugins.git
+  revision: cb6a16cf9fcf6fabd6141b8c651c197bd1e06896
+  branch: dev
+  specs:
+    openproject-plugins (1.0.8)
+      rails (~> 3.2.9)
+
+GIT
+  remote: https://github.com/opf/openproject-translations
+  revision: 9c2d38d5c6d0523593446bc0c51ef790215107a1
+  branch: dev
+  specs:
+    openproject-translations (3.0.0)
+      httmultiparty
+      openproject-plugins (~> 1.0.6)
+      rails (~> 3.2.14)
+      rest-client
+      rubyzip
 
 GIT
   remote: https://github.com/rails/prototype_legacy_helper.git
@@ -144,6 +173,13 @@ GEM
     hashie (2.0.5)
     hike (1.2.3)
     htmldiff (0.0.1)
+    httmultiparty (0.3.14)
+      httparty (>= 0.7.3)
+      mimemagic
+      multipart-post
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.8)
     interception (0.3)
     journey (1.0.4)
@@ -163,10 +199,13 @@ GEM
     metaclass (0.0.1)
     method_source (0.8.2)
     mime-types (1.25.1)
+    mimemagic (0.2.1)
     mocha (0.13.3)
       metaclass (~> 0.0.1)
     multi_json (1.9.2)
     multi_test (0.0.2)
+    multi_xml (0.5.5)
+    multipart-post (2.0.0)
     mysql2 (0.3.11)
     net-ldap (0.2.2)
     nokogiri (1.5.11)
@@ -244,6 +283,8 @@ GEM
       json (~> 1.4)
     ref (1.0.5)
     request_store (1.0.5)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -370,6 +411,9 @@ DEPENDENCIES
   object-daddy (~> 1.1.0)
   oj
   omniauth
+  openproject-meeting!
+  openproject-plugins!
+  openproject-translations!
   pg (~> 0.17.1)
   prototype-rails
   prototype_legacy_helper (= 0.0.0)!
