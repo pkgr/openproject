@@ -2,3 +2,6 @@ user: openproject
 group: openproject
 before_precompile: "./packaging/debian/setup.sh"
 after_install: "packaging/debian/postinstall.sh"
+build_dependencies:
+  - nodejs
+  - npm
