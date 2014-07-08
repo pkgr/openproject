@@ -30,6 +30,11 @@ case "$1" in
 
     # migrate
     ${CLI} run rake ${rake_commands} || true
+
+    # scale
+    ${CLI} scale web=1 worker=1 || true
+
+    # let the admin reboot when he's ready
   ;;
 
   abort-upgrade|abort-remove|abort-deconfigure)
