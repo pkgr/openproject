@@ -6,7 +6,6 @@ targets:
       - memcached
 before_precompile: "./packaging/debian/setup.sh"
 after_install: "packaging/debian/postinst"
-buildpack: https://github.com/ddollar/heroku-buildpack-multi.git
 addons:
   - mysql
   - apache2
