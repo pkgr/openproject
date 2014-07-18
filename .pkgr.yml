@@ -13,6 +13,7 @@ after_install: "packaging/debian/postinst"
 addons:
   - mysql
   - apache2
+  - svn-dav
   - smtp
 crons:
   - extra/cron/openproject-clear-old-sessions
