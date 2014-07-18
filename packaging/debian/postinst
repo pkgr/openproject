@@ -16,6 +16,9 @@ set -e
 
 CLI="openproject"
 
+# source debconf library
+. /usr/share/debconf/confmodule
+
 case "$1" in
 
   configure)
@@ -33,6 +36,18 @@ case "$1" in
 
     # migrate
     ${CLI} run rake ${rake_commands} || true
+
+    # set SYS_API_KEY
+    sys_api_key_random=$(< /dev/urandom tr -dc a-z0-9 | head -c32;echo;)
+    sys_api_key=$(${CLI} config:get SYS_API_KEY || echo "${sys_api_key_random}")
+    ${CLI} config:set SYS_API_KEY="${sys_api_key}"
+
+    # set various settings
+    db_get openproject/server/hostname
+    if [ -z "$RET" ]; then web_hostname=$(hostname -f); else web_hostname="$RET"; fi
+    db_get openproject/server/ssl
+    if [ "$RET" = "true" ]; then web_protocol="https"; else web_protocol="http"; fi
+    ${CLI} run rake setting:set[host_name=${web_hostname},protocol=${web_protocol},sys_api_enabled=1,sys_api_key=${sys_api_key}]
 
     # scale
     ${CLI} scale web=1 worker=1 || true

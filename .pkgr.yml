@@ -6,6 +6,7 @@ targets:
       - libmagickwand-dev
       - libsqlite3-dev
     dependencies:
+      - debconf
       - memcached
 before_precompile: "./packaging/debian/setup.sh"
 after_install: "packaging/debian/postinst"
