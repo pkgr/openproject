@@ -14,3 +14,6 @@ addons:
   - mysql
   - apache2
   - smtp
+crons:
+  - extra/cron/openproject-clear-old-sessions
+
