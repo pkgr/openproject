@@ -24,6 +24,9 @@ case "$1" in
       rake_commands="${rake_commands} db:seed"
     fi
 
+    # create attachments_path
+    ${CLI} run mkdir -p /var/db/openproject/files
+
     # set SECRET_TOKEN env variable
     secret_token=$(< /dev/urandom tr -dc a-z0-9 | head -c128;echo;)
     ${CLI} config:get SECRET_TOKEN || ${CLI} config:set SECRET_TOKEN="$secret_token" || true
