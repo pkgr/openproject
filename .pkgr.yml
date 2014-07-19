@@ -16,5 +16,6 @@ addons:
   - svn-dav
   - smtp
 crons:
-  - extra/cron/openproject-clear-old-sessions
+  - packaging/cron/openproject-clear-old-sessions
+  - packaging/cron/openproject-create-svn-repositories
 
