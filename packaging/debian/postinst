@@ -38,48 +38,15 @@ case "$1" in
     # migrate
     ${CLI} run rake ${rake_commands} || true
 
-    # set SYS_API_KEY
-    sys_api_key_random=$(< /dev/urandom tr -dc a-z0-9 | head -c32;echo;)
-    sys_api_key=$(${CLI} config:get SYS_API_KEY || echo "${sys_api_key_random}")
-    ${CLI} config:set SYS_API_KEY="${sys_api_key}"
+    sys_api_key=$(${CLI} config:get SYS_API_KEY)
 
     # set various settings
     db_get openproject/server/hostname
     if [ -z "$RET" ]; then web_hostname=$(hostname -f); else web_hostname="$RET"; fi
     db_get openproject/server/ssl
     if [ "$RET" = "true" ]; then web_protocol="https"; else web_protocol="http"; fi
+
     ${CLI} run rake setting:set[host_name=${web_hostname},protocol=${web_protocol},sys_api_enabled=1,sys_api_key=${sys_api_key}] 1>/dev/null
-
-    port=$(${CLI} config:get PORT || echo "6000")
-
-    # setup SVN integration
-    db_get ${APP_NAME}/svn-dav/autoinstall || true
-    if [ "$RET" = "true" ]; then
-      db_get ${APP_NAME}/svn-dav/repositories || true
-      svn_repositories="$RET"
-
-      cp -f "/opt/${APP_NAME}/extra/svn/OpenProjectAuthentication.pm" /usr/lib/perl5/Apache/
-      echo "PerlLoadModule Apache::OpenProjectAuthentication" > "/etc/${APP_NAME}/apache2/svn-perl.conf"
-
-      src="/usr/share/${APP_NAME}-svn-dav/templates/includes/vhost/svn.conf"
-      dst="/etc/${APP_NAME}/apache2/vhost/svn.conf"
-      if [ -f "$src" ]; then
-	tmpfile=$(mktemp)
-	cp -f "$src" "$tmpfile"
-	sed -i "s|_SVN_REPOSITORIES_|${svn_repositories}|g" ${tmpfile}
-	sed -i "s|_APP_URI_|http://127.0.0.1:${port}|g" ${tmpfile}
-	sed -i "s|_APP_API_KEY_|${sys_api_key}|g" ${tmpfile}
-	mv -f "$tmpfile" "$dst"
-	chmod 0640 "$dst"
-      else
-	echo "Can't find the SVN vhost configuration. Please ensure that the svn-dav addon is installed."
-      fi
-    else
-      rm -f "/etc/${APP_NAME}/apache2/svn-perl.conf"
-      rm -f "/etc/${APP_NAME}/apache2/vhost/svn.conf"
-    fi
-
-    service apache2 reload || true
 
     # scale
     ${CLI} scale web=1 worker=1 || true
