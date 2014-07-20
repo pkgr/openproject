@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 TARGET=${TARGET:=$ORIGINAL_PWD}
 TARGET=${TARGET:=$(pwd)}
