@@ -47,7 +47,7 @@ else
 fi
 
 if [ -d "$ATTACHMENTS_STORAGE_PATH" ]; then
-  dst="${TARGET}/attachments=${timestamp}.tar.gz"
+  dst="${TARGET}/attachments-${timestamp}.tar.gz"
   echo -n "* Generating attachments backup..." >&2
   if tar czf "$dst" -C "${ATTACHMENTS_STORAGE_PATH}" . ; then
     echo " done" >&2
