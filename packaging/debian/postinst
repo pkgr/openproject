@@ -74,8 +74,12 @@ case "$1" in
       else
 	echo "Can't find the SVN vhost configuration. Please ensure that the svn-dav addon is installed."
       fi
-      service apache2 reload || true
+    else
+      rm -f "/etc/${APP_NAME}/apache2/svn-perl.conf"
+      rm -f "/etc/${APP_NAME}/apache2/vhost/svn.conf"
     fi
+
+    service apache2 reload || true
 
     # scale
     ${CLI} scale web=1 worker=1 || true
