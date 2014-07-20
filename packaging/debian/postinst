@@ -28,8 +28,11 @@ case "$1" in
       rake_commands="${rake_commands} db:seed"
     fi
 
-    # create attachments_path
-    ${CLI} run mkdir -p /var/db/openproject/files
+    # create attachments folder
+    attachments_path=$(${CLI} config:get ATTACHMENTS_STORAGE_PATH || echo "/var/db/openproject/files")
+    mkdir -p "${attachments_path}"
+    chown ${APP_NAME}.${APP_NAME} "${attachments_path}"
+    ${CLI} config:set ATTACHMENTS_STORAGE_PATH="${attachments_path}"
 
     # set SECRET_TOKEN env variable
     secret_token=$(< /dev/urandom tr -dc a-z0-9 | head -c128;echo;)
