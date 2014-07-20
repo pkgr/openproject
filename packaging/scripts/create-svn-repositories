@@ -14,5 +14,5 @@ SYS_API_KEY=$(openproject config:get SYS_API_KEY)
   --url "file://${SVN_REPOSITORIES}" \
   --key "${SYS_API_KEY}" \
   --scm Subversion \
-  --verbose >> /var/log/openproject/cron-create-svn-repositories.log 2>&1
+  --verbose
 
