@@ -2,6 +2,8 @@ user: openproject
 group: openproject
 targets:
   centos-6:
+    build_dependencies:
+      - ImageMagick-devel
 before_precompile: "packaging/setup"
 #after_install: "packaging/debian/postinst"
 addons:
