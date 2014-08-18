@@ -1,5 +1,5 @@
-user: openproject
-group: openproject
+user: someuser
+group: somegroup
 targets:
   debian-7:
     build_dependencies:
